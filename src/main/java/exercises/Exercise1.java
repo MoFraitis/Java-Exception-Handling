@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Exercise1 {
 
-    public static int divide(int numorator, int denominator) {
+    public static int divide(int numerator, int denominator) {
 
-        return numorator / denominator;
+        return numerator / denominator;
 
     }
 
-    public static void divideUserInputs() throws NegativeIntegerInputException {
+    public static void divideUserInputs() {
         while (true) {
             try {
                 int[] userInputs = getUserInputs();
@@ -23,6 +23,8 @@ public class Exercise1 {
             }
             catch (ArithmeticException e) {
                 System.out.println("cannot divide by zero, please try again.");
+            }catch (NegativeIntegerInputException e){
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -35,8 +37,11 @@ public class Exercise1 {
         inputs[0] = userInputs.nextInt();
         System.out.print("Enter dividend: ");
         inputs[1] = userInputs.nextInt();
+        if(inputs[0]<0 && inputs[1]<0){
+            throw new NegativeIntegerInputException(inputs[0], inputs[1]);
+        }
         if(inputs[0]<0 || inputs[1]<0){
-            throw new NegativeIntegerInputException(inputs[0]<0? inputs[0] :inputs[1]);
+            throw new NegativeIntegerInputException(inputs[0]<0? inputs[0]:inputs[1]);
         }
         return inputs;
 

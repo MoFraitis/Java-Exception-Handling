@@ -3,7 +3,7 @@ import exercises.Exercise1;
 
 public class Main {
 
-    public static void main(String[] args) throws NegativeIntegerInputException {
+    public static void main(String[] args) {
         Exercise1.divideUserInputs();
     }
 
